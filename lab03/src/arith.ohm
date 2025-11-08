@@ -1,3 +1,15 @@
 Arithmetic {
-    // write rules here
+    Sum = Mul (add Mul)*
+    add = "+" | "-"
+
+    Mul = Neg (mul Neg)*
+    mul = "*" | "/"
+
+    Neg = "-" Neg   --neg
+        | Atom
+
+    Atom = number | variable | Paren 
+    Paren = "(" Sum ")"
+    variable = letter alnum*
+    number = digit+
 }

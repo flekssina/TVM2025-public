@@ -1,3 +1,11 @@
 AddMul {
- // Write the rules here
+    Expr = Sum
+
+    number = digit+
+
+    Paren = "(" Expr ")"
+    Atom = number | Paren
+	Sum = Mul ( "+" Sum)?
+    Mul = Atom ("*" Mul)?
+    space := " " | "\t" | "\n" | "\r"
 }
