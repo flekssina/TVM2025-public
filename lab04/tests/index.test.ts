@@ -20,7 +20,8 @@ describe('testing addition and multiplication printing', () => {
     test("Complex expressions with paren are supported", 4, parseAndPrint, "7 + 2 * 7 + 3 * 6 + 3", "7+2*7+3*6+3");
     test("Parentheses are correctly supported", 4, parseAndPrint, "(2 + 1) * 7 + 3 * 2 * 3 + 2 * (1 + 0) + 1", "(2+1)*7+(3*2*3)+2*(1+0)+1");
     test("Extra paren are removed", 4, parseAndPrint, "(2 + 1) * 7 + 3 * 2 * 3 + 2 * (1 + 0) + 1", "(2+1)*7+(3*(2)*3)+2*((1+(0)))+1");
-    });
+
+    })
 describe('Testing subtraction and division', () => {
     test("Subtraction is supported", 3, parseAndPrint, "42 - 21", "42-21");
     test("Subtraction is left-associative", 4, parseAndPrint, "10 - 4 - 1", "10-4-1");
@@ -46,4 +47,9 @@ describe('testing variables', () => {
     test("variables can be used", 3, parseAndPrint, "x + 1", "x+1");
     test("Two variables are handled", 3, parseAndPrint, "x + y", "x+y");
     test("Complex expressions are properly printed",  4, parseAndPrint, "(x * y + 1) * y * x", "(x*y+1)*y*x");
+});
+describe('testing variables', () => {
+    test("variables can be used", 4, parseAndPrint, "1 + 2 + 3", "1+2+3");
+    test("Two variables are handled", 4, parseAndPrint, "3 + (5 - 7)", "3+(5-7)");
+    
 });
