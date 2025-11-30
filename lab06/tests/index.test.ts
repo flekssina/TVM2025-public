@@ -36,6 +36,8 @@ describe("Structural tests", ()=>{
     test("(f*g)' == f'*g + f*g' 2", 4, parseAndDerive, parseExpr("x"), "x*y", "y");
     test("(f*g)' == f'*g + f*g' 3", 4, parseAndDerive, parseExpr("x*y*f*g*h"), "x*y*z*f*g*h", "z");
     test("(f / g)' = (f'*g - g'*f)/g*g ", 4, parseAndDerive, ()=>parseExpr("1/(y*y)"), "5*x-1/y", "y");
+    test("x*x", 5,parseAndDerive, parseExpr("2*x"), "x*x", "x");
+    
 });
 
 
@@ -50,3 +52,6 @@ async function deriveAndCalculate(source: string, varName: string, ...args:numbe
     let derivative = derive(expr, varName);
     return await compileAndExecute(derivative, variables, ...args);
 }
+
+
+//test("x*x", 5, parseAndDerive, parseExpr("2*x"), "x*x", "x")
